@@ -2,7 +2,7 @@
 
 ![sample image](img/image.png)
 
-The project demonstrates [Star Wars GraphQL API](https://studio.apollographql.com/public/star-wars-swapi/variant/current/explorer) connection to star wars  to pull in data for star wars opening crawler.
+The project demonstrates [Star Wars GraphQL API](https://studio.apollographql.com/public/star-wars-swapi/variant/current/explorer) client connection to pull in data for star wars opening crawler.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
