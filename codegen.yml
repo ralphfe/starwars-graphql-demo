@@ -1,0 +1,8 @@
+schema: https://swapi-graphql.netlify.app/.netlify/functions/index
+documents: "src/**/*.ts"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"

@@ -1,16 +1,27 @@
 'use client'
 
 import Crawl from "@liorpo/react-star-wars-crawl";
+import { useQuery } from '@apollo/client';
+import { GetAllFilms } from '../queries/getAllFilms';
+import { Root } from '../generated/graphql';
 
 export default function Home() {
+  const { data, loading, error } = useQuery<Root>(GetAllFilms);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const subTitle = data?.allFilms?.films?.[0]?.title ?? "FAILED TO LOAD";
+  const text = data?.allFilms?.films?.[0]?.openingCrawl ?? "FAILED TO LOAD";
+
   return (
     <Crawl containerStyles={{
         height: "100vh",
         width: "100vw"
       }}
       title="Episode IV"
-      subTitle="A New Hope"
-      text="It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy…"
+      subTitle={subTitle}
+      text={text}
     />
   );
 }
