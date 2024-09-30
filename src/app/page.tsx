@@ -1,12 +1,17 @@
 'use client'
 
 import Crawl from "@liorpo/react-star-wars-crawl";
-import { useQuery } from '@apollo/client';
-import { GET_FILM_BY_ID } from '../queries/getFilmById';
+import { gql, useQuery } from '@apollo/client';
 import { Root, RootFilmArgs } from '../generated/graphql';
 
 export default function Home() {
-  const { data, loading, error } = useQuery<Root, RootFilmArgs>(GET_FILM_BY_ID, {
+  const query = gql`query GetFilmById ($filmID: ID!) {
+      film(filmID: $filmID) {
+          title
+          openingCrawl
+      }
+  }`;
+  const { data, loading, error } = useQuery<Root, RootFilmArgs>(query, {
     variables: { filmID: "1" }
   });
 
