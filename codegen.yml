@@ -1,5 +1,5 @@
 schema: https://swapi-graphql.netlify.app/.netlify/functions/index
-documents: "src/**/*.ts"
+documents: "src/**/*.tsx"
 generates:
   src/generated/graphql.tsx:
     plugins:
