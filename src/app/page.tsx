@@ -5,14 +5,17 @@ import { gql, useQuery } from '@apollo/client';
 import { Root, RootFilmArgs } from '../generated/graphql';
 
 export default function Home() {
-  const query = gql`query GetFilmById ($filmID: ID!) {
+  const GET_FILM_BY_ID = gql`
+    query GetFilmById($filmID: ID) {
       film(filmID: $filmID) {
-          title
-          openingCrawl
+        title
+        openingCrawl
       }
-  }`;
-  const { data, loading, error } = useQuery<Root, RootFilmArgs>(query, {
-    variables: { filmID: "1" }
+    }
+  `;
+
+  const { data, loading, error } = useQuery<Root, RootFilmArgs>(GET_FILM_BY_ID, {
+    variables: { filmID: "1" },
   });
 
   if (loading) return <p>Loading...</p>;
