@@ -3,7 +3,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { PropsWithChildren } from 'react';
 
 const client = new ApolloClient({
-    uri: "https://swapi-graphql.netlify.app/.netlify/functions/index",
+    uri: "todo",
     cache: new InMemoryCache(),
 });
 

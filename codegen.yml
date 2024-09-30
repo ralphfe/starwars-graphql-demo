@@ -1,7 +1,7 @@
-schema: https://swapi-graphql.netlify.app/.netlify/functions/index
-documents: "src/**/*.tsx"
+schema: todo
+documents: todo
 generates:
-  src/generated/graphql.tsx:
+  todo:
     plugins:
       - "typescript"
       - "typescript-operations"
