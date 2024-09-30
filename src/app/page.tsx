@@ -2,17 +2,19 @@
 
 import Crawl from "@liorpo/react-star-wars-crawl";
 import { useQuery } from '@apollo/client';
-import { GetAllFilms } from '../queries/getAllFilms';
-import { Root } from '../generated/graphql';
+import { GET_FILM_BY_ID } from '../queries/getFilmById';
+import { Root, RootFilmArgs } from '../generated/graphql';
 
 export default function Home() {
-  const { data, loading, error } = useQuery<Root>(GetAllFilms);
+  const { data, loading, error } = useQuery<Root, RootFilmArgs>(GET_FILM_BY_ID, {
+    variables: { filmID: "1" }
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const subTitle = data?.allFilms?.films?.[0]?.title ?? "FAILED TO LOAD";
-  const text = data?.allFilms?.films?.[0]?.openingCrawl ?? "FAILED TO LOAD";
+  const subTitle = data?.film?.title ?? "FAILED TO LOAD";
+  const text = data?.film?.openingCrawl ?? "FAILED TO LOAD";
 
   return (
     <Crawl containerStyles={{
